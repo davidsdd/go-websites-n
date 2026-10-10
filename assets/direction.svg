@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --gold: #947a50;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --gold: #ccb58e; }
+    }
+  </style>
+  <!-- 四向对称的方向标志；使用统一颜色，中央留空。 -->
+  <path d="M60 18 70 50 102 60 70 70 60 102 50 70 18 60 50 50 60 18ZM60 51 51 60 60 69 69 60 60 51Z" fill="var(--gold)" fill-rule="evenodd"/>
+</svg>

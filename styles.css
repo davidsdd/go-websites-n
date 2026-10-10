@@ -1,0 +1,139 @@
+/* 字体随网站保存在本地，无需联网或安装。 */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./fonts/cormorant-garamond-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+/* 浅色主题。修改这些变量即可调整页面配色。 */
+:root {
+  --background: #f4f3ef;
+  --ink: #30394e;
+  --warm-ink: #715e41;
+  --gold: #947a50;
+  --line: rgba(115, 107, 93, 0.25);
+  --glow: rgba(210, 215, 233, 0.26);
+  --selection: #ddd6c6;
+}
+
+/* 自动跟随系统深色模式，不提供手动切换开关。 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #171c2a;
+    --ink: #e9edf5;
+    --warm-ink: #d7c5a7;
+    --gold: #ccb58e;
+    --line: rgba(204, 181, 142, 0.2);
+    --glow: rgba(78, 94, 139, 0.14);
+    --selection: #4e4a44;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--selection); color: var(--ink); }
+
+.page {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 54px clamp(30px, 8vw, 144px) 48px;
+  background:
+    radial-gradient(ellipse at 50% 35%, var(--glow), transparent 60%),
+    var(--background);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: var(--line);
+  pointer-events: none;
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  gap: 25px;
+}
+
+.emblem { display: block; width: 62px; height: 62px; }
+.masthead-line { width: 62px; height: 1px; background: var(--line); }
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+  min-height: 490px;
+  padding: 80px 0 102px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  max-width: 100%;
+  font-size: clamp(60px, 8.2vw, 118px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.title-line { display: block; }
+.inner-service { color: var(--warm-ink); }
+
+.title-rule {
+  width: 48px;
+  height: 2px;
+  margin-top: 43px;
+  background: var(--gold);
+  opacity: 0.8;
+}
+
+.baseline { height: 1px; flex: 0 0 auto; background: var(--line); }
+
+@media (min-width: 1600px) {
+  .page { padding-top: 68px; padding-bottom: 58px; }
+  .emblem { width: 70px; height: 70px; }
+}
+
+@media (max-width: 900px) {
+  .page { padding: 43px 44px 38px; }
+  .hero { min-height: 450px; padding: 80px 0 90px; }
+  h1 { font-size: clamp(54px, 8.8vw, 80px); }
+}
+
+@media (max-width: 600px) {
+  .page { padding: 38px 29px 30px; }
+  .page::before { top: 16px; left: 16px; right: 16px; }
+  .masthead { gap: 19px; }
+  .emblem { width: 54px; height: 54px; }
+  .masthead-line { width: 42px; }
+  .hero { min-height: 400px; padding: 74px 0 88px; }
+  h1 { font-size: clamp(36px, 11.6vw, 62px); line-height: 1.09; letter-spacing: -0.03em; }
+  .title-rule { width: 40px; margin-top: 32px; }
+}
